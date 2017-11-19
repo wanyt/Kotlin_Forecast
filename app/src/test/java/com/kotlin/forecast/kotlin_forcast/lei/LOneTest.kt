@@ -19,7 +19,8 @@ class LOneTest{
 
     @Test
     fun testLet(){
-        LOne("wang")
+        val lOne = LOne(name = "wang")
+        lOne.step1("wang", "0li")
     }
 
 

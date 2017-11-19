@@ -11,20 +11,33 @@ import android.support.annotation.IntegerRes
  * <p>
  * Version: 1.0.9
  */
-class LOne (name: String, age: Double = 1.0){
+class LOne(name: String, age: Double = 1.0) {
 
     open val theName = name
 
     init {
-        print(theName)
+//        print(theName)
     }
 
-    constructor(name: String, age: Integer) : this(name){
+    constructor(name: String, age: Integer) : this(name) {
 
     }
 
 
-    fun step1(){
+    fun step1(t1: String, t2: String) {
+
+        val list = ArrayList<String>()
+        list.add(t1)
+        list.add(t2)
+
+        list.filter { it.contains("0") }
+                .map { it + "" }
+                .forEach { println(::String) }
+
+        val mapOf = mapOf(0 to "zero", 1 to "one", 2 to "two")
+
+        mapOf.mapValues { it.value.toUpperCase() }
+                .forEach { println("${it.key} 对应的值是 ${it.value}") }
 
     }
 

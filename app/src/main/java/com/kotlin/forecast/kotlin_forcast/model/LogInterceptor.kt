@@ -1,6 +1,5 @@
-package com.kotlin.forecast.kotlin_forcast.network
+package com.kotlin.forecast.kotlin_forcast.model
 
-import android.icu.text.IDNA
 import okhttp3.Interceptor
 import okhttp3.Response
 import okhttp3.internal.platform.Platform

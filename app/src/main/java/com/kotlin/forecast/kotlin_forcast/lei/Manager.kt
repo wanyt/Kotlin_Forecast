@@ -9,6 +9,14 @@ package com.kotlin.forecast.kotlin_forcast.lei
  * <p>
  * Version: 1.0.9
  */
-object Manager{
+object Manager {
     val abc = "aa"
+
+    fun man() {
+        val one = LOne("name", age = 17.0)
+
+        val kFunction3 = LOne::step1
+
+    }
+
 }

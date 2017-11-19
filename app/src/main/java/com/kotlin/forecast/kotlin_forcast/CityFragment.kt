@@ -7,14 +7,11 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.kotlin.forecast.kotlin_forcast.network.DataManager
+import com.kotlin.forecast.kotlin_forcast.model.DataManager
 import kotlinx.android.synthetic.main.fragment_city.*
-import okhttp3.Request
 import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.Response
-import java.util.logging.LogRecord
-import javax.security.auth.callback.Callback
 
 /**
  * Create on 2017/10/24 下午11:20
@@ -57,6 +54,15 @@ class CityFragment : Fragment() {
 //                val toString = response.toString()
                 Log.d("abcd>", t.toString())
             }
+        })
+
+        val abc = "chen"
+        val abcd = "wang"
+
+
+        tv_txt.setOnClickListener({ tv_txt.text = "wangyunti" })
+
+        tv_txt.setOnClickListener(View.OnClickListener(){
 
         })
 

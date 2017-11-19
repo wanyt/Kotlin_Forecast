@@ -9,27 +9,13 @@ import java.util.logging.Logger
  * <p>
  * author wang
  * <p>
- * Description:
+ * Description: 所有的扩展方法
  * <p>
  * Version: 1.0.6
  */
 
-//val logger: Logger = Logger{
-//    override fun log(msg: String){
-//
-//    }
-//}
-
-
-
 val <T> List<T>.lastIndex: Int
     get() = size - 1
-
-fun <T> List<T>.getFirstElement(){
-    if (this != null) {
-
-    }
-}
 
 fun Activity.toastShort(msg: String){
     Toast.makeText(this, msg, Toast.LENGTH_SHORT).show()
