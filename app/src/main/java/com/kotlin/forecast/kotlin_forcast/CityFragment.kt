@@ -8,6 +8,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.kotlin.forecast.kotlin_forcast.model.DataManager
+import com.kotlin.forecast.kotlin_forcast.model.bean.ForecastBean
+import io.reactivex.functions.Consumer
 import kotlinx.android.synthetic.main.fragment_city.*
 import okhttp3.ResponseBody
 import retrofit2.Call
@@ -32,6 +34,7 @@ class CityFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         tv_txt.setText("abcdddd")
+        tv_txt.setOnClickListener { getForecastInfo() }
 
         getForecastInfo()
     }
@@ -43,29 +46,22 @@ class CityFragment : Fragment() {
         arrayMap.put("unit", "m")
 
         val forecast = DataManager.getForecast(arrayMap)
-        forecast.enqueue(object : retrofit2.Callback<ResponseBody>{
-            override fun onResponse(call: Call<ResponseBody>?, response: Response<ResponseBody>?) {
-//                val toString = response.toString()
-//                response?.body()?.string()
-                Log.d("abc>", response?.body()?.string())
-            }
 
-            override fun onFailure(call: Call<ResponseBody>?, t: Throwable?) {
-//                val toString = response.toString()
-                Log.d("abcd>", t.toString())
-            }
-        })
+        forecast.subscribe(
+                {
+                    val forecastInfo = it.HeWeather6.get(0)
+                    val basic = forecastInfo.basic
+                    val firstDay = forecastInfo.daily_forecast.get(0)
 
-        val abc = "chen"
-        val abcd = "wang"
-
-
-        tv_txt.setOnClickListener({ tv_txt.text = "wangyunti" })
-
-        tv_txt.setOnClickListener(View.OnClickListener(){
-
-        })
-
+                    tv_txt.text = "${basic.location} today temprature is ${firstDay.tmp_max}"
+                },
+                {
+                    Log.d("abcd>>", "abcd")
+                    Log.d("abcd>>", "abcd>> $it.message")
+                },
+                {
+                    Log.d("abcd>>", "abcd>> load completed")
+                })
 
     }
 

@@ -1,6 +1,10 @@
 package com.kotlin.forecast.kotlin_forcast.model
 
+import com.kotlin.forecast.kotlin_forcast.model.bean.ForecastBean
 import com.kotlin.forecast.kotlin_forcast.model.service.CommonService
+import io.reactivex.Flowable
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.schedulers.Schedulers
 import okhttp3.ResponseBody
 import retrofit2.Call
 
@@ -15,9 +19,12 @@ import retrofit2.Call
  */
 object DataManager {
 
-    private val network = RequestBuilder.retrofit.create(CommonService::class.java)!!
+    private val network = RequestBuilder.retrofit.create(CommonService::class.java)
 
     //获取近期的天气预报
-    fun getForecast(args: Map<String, String>) : Call<ResponseBody> = network.getForecast(args)
+    fun getForecast(args: Map<String, String>): Flowable<ForecastBean> =
+            network.getForecast(args)
+                    .subscribeOn(Schedulers.newThread())
+                    .observeOn(AndroidSchedulers.mainThread());
 
 }

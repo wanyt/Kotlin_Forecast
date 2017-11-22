@@ -5,7 +5,7 @@ package com.kotlin.forecast.kotlin_forcast.model
  * <p>
  * author wang
  * <p>
- * Description:
+ * Description: 所有的接口
  * <p>
  * Version: 1.0.9
  */
