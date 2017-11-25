@@ -1,7 +1,9 @@
 package com.kotlin.forecast.kotlin_forcast.model.service
 
+import android.support.v4.util.ArrayMap
 import com.kotlin.forecast.kotlin_forcast.model.NetInterface
 import com.kotlin.forecast.kotlin_forcast.model.bean.ForecastBean
+import com.kotlin.forecast.kotlin_forcast.model.bean.RealTimeBean
 import io.reactivex.Flowable
 import okhttp3.ResponseBody
 import retrofit2.Call
@@ -21,5 +23,8 @@ interface CommonService{
 
     @GET(NetInterface.forecast)
     fun getForecast(@QueryMap args: Map<String, String>): Flowable<ForecastBean>
+
+    @GET(NetInterface.realTime)
+    fun getRealTimeInfo(@QueryMap params: ArrayMap<String, String>): Flowable<RealTimeBean>
 
 }

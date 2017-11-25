@@ -1,6 +1,8 @@
 package com.kotlin.forecast.kotlin_forcast.model
 
+import android.support.v4.util.ArrayMap
 import com.kotlin.forecast.kotlin_forcast.model.bean.ForecastBean
+import com.kotlin.forecast.kotlin_forcast.model.bean.RealTimeBean
 import com.kotlin.forecast.kotlin_forcast.model.service.CommonService
 import io.reactivex.Flowable
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -26,5 +28,12 @@ object DataManager {
             network.getForecast(args)
                     .subscribeOn(Schedulers.newThread())
                     .observeOn(AndroidSchedulers.mainThread());
+
+    //获取实时天气
+    fun getRealTimeInfo(params: ArrayMap<String, String>): Flowable<RealTimeBean> =
+            network.getRealTimeInfo(params)
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread());
+
 
 }

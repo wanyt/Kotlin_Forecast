@@ -1,6 +1,7 @@
 package com.kotlin.forecast.kotlin_forcast
 
 import android.app.Activity
+import android.support.v7.widget.RecyclerView
 import android.widget.Toast
 import java.util.logging.Logger
 

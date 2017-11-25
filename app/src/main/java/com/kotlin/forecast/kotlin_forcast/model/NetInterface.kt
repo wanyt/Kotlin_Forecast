@@ -9,8 +9,9 @@ package com.kotlin.forecast.kotlin_forcast.model
  * <p>
  * Version: 1.0.9
  */
-object NetInterface{
+object NetInterface {
 
-    const val forecast = "/s6/weather/forecast"
+    const val realTime = "/s6/weather/now"//实时天气
+    const val forecast = "/s6/weather/forecast"//未来天气
 
 }
