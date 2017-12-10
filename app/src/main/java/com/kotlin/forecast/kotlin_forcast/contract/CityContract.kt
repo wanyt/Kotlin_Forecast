@@ -1,5 +1,7 @@
 package com.kotlin.forecast.kotlin_forcast.contract
 
+import com.kotlin.forecast.kotlin_forcast.base.BaseMVPContract
+import com.kotlin.forecast.kotlin_forcast.base.BaseMVPPresenter
 import com.kotlin.forecast.kotlin_forcast.model.bean.CityBean
 import com.kotlin.forecast.kotlin_forcast.model.bean.ForecastBean
 import com.kotlin.forecast.kotlin_forcast.model.bean.FutureInfo
@@ -17,13 +19,14 @@ import com.kotlin.forecast.kotlin_forcast.model.bean.RealTimeBean
 class CityContract {
 
 
-    interface View {
+    interface View : BaseMVPContract.View {
+        fun getCityBean(): CityBean
         fun showForecastInfo(it: ForecastBean)
         fun showRealTimeInfo(it: RealTimeBean)
         fun showFutureWeatherInfo(list: ArrayList<FutureInfo>)
     }
 
-    interface Presenter {
+    interface Presenter : BaseMVPPresenter<View> {
         fun getWeatherInfo(city: CityBean)
     }
 

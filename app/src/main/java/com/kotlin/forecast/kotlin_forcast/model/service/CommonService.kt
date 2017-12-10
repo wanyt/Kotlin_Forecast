@@ -25,6 +25,6 @@ interface CommonService{
     fun getForecast(@QueryMap args: Map<String, String>): Flowable<ForecastBean>
 
     @GET(NetInterface.realTime)
-    fun getRealTimeInfo(@QueryMap params: ArrayMap<String, String>): Flowable<RealTimeBean>
+    fun getRealTimeInfo(@QueryMap params: Map<String, String>): Flowable<RealTimeBean>
 
 }

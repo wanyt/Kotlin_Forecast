@@ -2,8 +2,8 @@ package com.kotlin.forecast.kotlin_forcast
 
 import android.app.Activity
 import android.support.v7.widget.RecyclerView
+import android.util.Log
 import android.widget.Toast
-import java.util.logging.Logger
 
 /**
  * Create on 2017/9/14 上午9:17
@@ -20,4 +20,9 @@ val <T> List<T>.lastIndex: Int
 
 fun Activity.toastShort(msg: String){
     Toast.makeText(this, msg, Toast.LENGTH_SHORT).show()
+}
+
+fun Activity.debugInfo(msg: String){
+    val tag = "log info>>"
+    Log.d(tag, msg);
 }

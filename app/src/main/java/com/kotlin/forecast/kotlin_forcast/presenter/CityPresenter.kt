@@ -1,6 +1,9 @@
 package com.kotlin.forecast.kotlin_forcast.presenter
 
+import android.arch.lifecycle.Lifecycle
+import android.arch.lifecycle.OnLifecycleEvent
 import android.support.v4.util.ArrayMap
+import android.util.Log
 import com.kotlin.forecast.kotlin_forcast.WeatherMap
 import com.kotlin.forecast.kotlin_forcast.contract.CityContract
 import com.kotlin.forecast.kotlin_forcast.model.DataManager
@@ -17,7 +20,18 @@ import com.kotlin.forecast.kotlin_forcast.model.bean.FutureInfo
  * <p>
  * Version: 1.0.9
  */
-class CityPresenter(val view: CityContract.View) : CityContract.Presenter {
+class CityPresenter(override var view: CityContract.View?) : CityContract.Presenter {
+
+    @OnLifecycleEvent(Lifecycle.Event.ON_RESUME)
+    fun onCreate() {
+        Log.d("log info>>", "city Presenter create")
+        getWeatherInfo(view!!.getCityBean())
+    }
+
+    @OnLifecycleEvent(Lifecycle.Event.ON_START)
+    fun onStart() {
+        Log.d("log info>>", "city presenter start")
+    }
 
     /**
      * 获取天气数据
@@ -28,7 +42,6 @@ class CityPresenter(val view: CityContract.View) : CityContract.Presenter {
         paramMap.put("key", "726096547ed942a3947b1e22c2c7b6ee")
         paramMap.put("lang", "en")
 
-
         getForecastInfo(paramMap)
         getRealTimeInfo(paramMap)
     }
@@ -38,7 +51,7 @@ class CityPresenter(val view: CityContract.View) : CityContract.Presenter {
      */
     private fun getRealTimeInfo(params: ArrayMap<String, String>) {
         DataManager.getRealTimeInfo(params)
-                .subscribe({ view.showRealTimeInfo(it) }, {})
+                .subscribe({ view?.showRealTimeInfo(it) }, {})
     }
 
     /**
@@ -47,7 +60,7 @@ class CityPresenter(val view: CityContract.View) : CityContract.Presenter {
     private fun getForecastInfo(params: ArrayMap<String, String>) {
         DataManager.getForecast(params)
                 .subscribe({
-                    view.showForecastInfo(it)
+                    view?.showForecastInfo(it)
                     createForecastBean(it.HeWeather6.get(0).daily_forecast)
                 }, {})
     }
@@ -68,7 +81,7 @@ class CityPresenter(val view: CityContract.View) : CityContract.Presenter {
             }
         }
 
-        view.showFutureWeatherInfo(list)
+        view?.showFutureWeatherInfo(list)
     }
 
 

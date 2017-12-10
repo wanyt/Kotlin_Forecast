@@ -1,4 +1,4 @@
-package com.kotlin.forecast.kotlin_forcast
+package com.kotlin.forecast.kotlin_forcast.view
 
 import android.support.v4.app.FragmentActivity
 import android.support.v7.widget.RecyclerView
@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.bumptech.glide.Glide
+import com.kotlin.forecast.kotlin_forcast.R
 import com.kotlin.forecast.kotlin_forcast.model.bean.FutureInfo
 import kotlinx.android.synthetic.main.item_future_info.view.*
 

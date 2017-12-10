@@ -5,6 +5,7 @@ import okhttp3.Response
 import okhttp3.internal.platform.Platform
 import okhttp3.internal.platform.Platform.INFO
 import java.lang.System.*
+import javax.inject.Inject
 
 /**
  * Create on 2017/11/1 下午8:09
@@ -15,7 +16,7 @@ import java.lang.System.*
  * <p>
  * Version: 1.0.9
  */
-class LogInterceptor : Interceptor {
+class LogInterceptor @Inject constructor() : Interceptor {
 
     private var logger: Logger
 
